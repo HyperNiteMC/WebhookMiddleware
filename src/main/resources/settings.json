@@ -1,0 +1,7 @@
+{
+  "origins": [ "https://whatever.com" ],
+  "nexus_secret": "tester",
+  "discord":{
+    "webhookUrl": "https://discordapp.com/api/webhooks/whatever"
+  }
+}

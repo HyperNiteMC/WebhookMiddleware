@@ -1,0 +1,7 @@
+# Project exclude paths
+/target/
+/.idea/
+WebhookMiddleware.iml
+dependency-reduced-pom.xml
+/docker/
+settings.json
