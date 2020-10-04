@@ -24,7 +24,7 @@ object Storage {
                     private val dateFormat: DateFormat = SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss.SSS'Z'")
 
                     override fun write(p0: JsonWriter?, p1: LocalDateTime?) {
-                        val date = Date.from(p1?.toInstant(ZoneOffset.ofHours(+16)))
+                        val date = Date.from(p1?.toInstant(ZoneOffset.ofHours(0)))
                         p0?.value(dateFormat.format(date))
                     }
 

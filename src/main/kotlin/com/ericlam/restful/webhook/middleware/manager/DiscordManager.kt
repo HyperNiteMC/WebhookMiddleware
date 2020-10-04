@@ -30,7 +30,7 @@ object DiscordManager {
                    .build()
            val con = client.send(request, HttpResponse.BodyHandlers.ofString())
            if (con.statusCode() == 404) {
-               logger.error("404 Not found for webhook url ${Storage.settings.discord.webhookUrl}")
+               logger.warn("404 Not found for webhook url ${Storage.settings.discord.webhookUrl}")
                return@runAsync
            }
            logger.info("Successfully sent and get response code ${con.statusCode()}")
