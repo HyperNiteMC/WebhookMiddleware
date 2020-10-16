@@ -56,6 +56,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: webhook-middlewaret:latest
+          tags: docker/webhook-middleware:latest
 
 
