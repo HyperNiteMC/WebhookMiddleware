@@ -33,12 +33,12 @@ jobs:
       - name: Publish with Maven
         run: |
           mvn -B package --file pom.xml
-      - name: setup docker image
+      - name: Setup Docker Image
         run: |
           mv target/webhook.jar .
           ls -la
-      - name: publish image to docker
-        uses: docker/build-push-action@v1
+      - name: Publish Image to Docker
+        uses: docker/build-push-action@master
         with:
           registry: registry.chu77.xyz
           username: ${{ secrets.DOCKER_USERNAME }}
