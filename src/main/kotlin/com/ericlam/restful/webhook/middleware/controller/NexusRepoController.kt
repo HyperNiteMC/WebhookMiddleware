@@ -17,7 +17,7 @@ object NexusRepoController {
 
     fun handleComponentUpdate(ctx: Context){
         val signature = ctx.header("X-Nexus-Webhook-Signature")
-        val signatureServer = generateSignature(ctx.body(), Storage.settings.nexus_secret)
+        val signatureServer = generateSignature(ctx.body(), Storage.settings.secrets["nexus"] ?: "")
         if (signature != signatureServer){
             logger.warn("Signature mismatch, skipped.")
             throw UnauthorizedResponse("signature mismatch")
@@ -25,7 +25,10 @@ object NexusRepoController {
         val event = ctx.bodyAsClass(ComponentEvent::class.java)
         logger.info("received: $event")
         val repo = event.repositoryName
-        if (event.action == ACTION.CREATED) DiscordManager.sendWebHookMessage(repo, event.component)
+        if (event.action == ACTION.CREATED) {
+            val webhook = DiscordManager.WebHookParser.fromNexusComponent(repo, event.component)
+            DiscordManager.sendWebHookMessage(webhook, Storage.settings.webhooks["nexus_discord"])
+        }
         ctx.json(mapOf("result" to "ok"))
     }
 

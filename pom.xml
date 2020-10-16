@@ -6,7 +6,7 @@
 
     <groupId>com.ericlam.restful</groupId>
     <artifactId>WebhookMiddleware</artifactId>
-    <version>0.0.5</version>
+    <version>version-inside-code</version>
 
     <dependencies>
         <dependency>
@@ -32,6 +32,7 @@
     </dependencies>
 
     <build>
+        <finalName>webhook</finalName>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <resources>
             <resource>

@@ -47,11 +47,7 @@ object Storage {
 
     data class Settings(
             val origins: List<String>,
-            val nexus_secret: String,
-            val discord: Discord
-    )
-
-    data class Discord(
-            val webhookUrl: String
+            val secrets: Map<String, String>,
+            val webhooks: Map<String, String>
     )
 }

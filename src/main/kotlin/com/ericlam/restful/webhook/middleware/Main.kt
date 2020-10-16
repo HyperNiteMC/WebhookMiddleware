@@ -13,6 +13,7 @@ import java.time.LocalDateTime
 
 fun main() {
     val timenow = LocalDateTime.now()
+    val version = "v0.0.5"
 
     JavalinJson.fromJsonMapper = object : FromJsonMapper {
         override fun <T> map(json: String, targetClass: Class<T>): T = GSON.fromJson(json, targetClass)
@@ -34,7 +35,10 @@ fun main() {
         path("") {
 
             get("") { ctx ->
-                ctx.json(mapOf("status" to "running", "startAt" to timenow.toString()))
+                ctx.json(mapOf(
+                        "status" to "running",
+                        "version" to version,
+                        "startAt" to timenow.toString()))
             }
 
         }
