@@ -35,8 +35,8 @@ jobs:
           mvn -B package --file pom.xml
       - name: setup docker image
         run: |
-          ls -la
           mv target/webhook.jar .
+          ls -la
       - name: publish image to docker
         uses: docker/build-push-action@v1
         with:
